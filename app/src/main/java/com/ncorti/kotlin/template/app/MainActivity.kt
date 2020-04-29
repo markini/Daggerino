@@ -3,6 +3,7 @@ package com.ncorti.kotlin.template.app
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import at.marki.daggerino.app.R
 import com.ncorti.kotlin.template.library.FactorialCalculator
 import com.ncorti.kotlin.template.library.android.NotificationUtil
 import kotlinx.android.synthetic.main.activity_main.*
