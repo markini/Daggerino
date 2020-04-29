@@ -29,6 +29,20 @@ android {
             )
         }
     }
+    signingConfigs {
+        create("release") {
+            storeFile = rootProject.file("keystore.jks")
+            keyAlias = "key"
+            storePassword = "daggerino"
+            keyPassword = "daggerino"
+        }
+        getByName("debug") {
+            storeFile = rootProject.file("keystore.jks")
+            keyAlias = "key"
+            storePassword = "daggerino"
+            keyPassword = "daggerino"
+        }
+    }
 
     lintOptions {
         isWarningsAsErrors = true
