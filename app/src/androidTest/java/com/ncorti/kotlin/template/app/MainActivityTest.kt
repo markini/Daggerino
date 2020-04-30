@@ -1,15 +1,12 @@
 package com.ncorti.kotlin.template.app
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
-import androidx.test.espresso.action.ViewActions.typeText
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
+import at.marki.daggerino.app.R
 import com.ncorti.kotlin.template.app.views.calculator.MainActivity
 import org.junit.Rule
 import org.junit.Test
@@ -20,14 +17,15 @@ class MainActivityTest {
 
     @get:Rule
     var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(
-        MainActivity::class.java)
+        MainActivity::class.java
+    )
 
     @Test
     fun typeANumber_resultIsDisplayed() {
-        onView(withId(R.id.edit_text_factorial)).perform(typeText("1"), closeSoftKeyboard())
-        onView(withId(R.id.button_compute)).perform(click())
+        onView(withId(R.id.et_factorial)).perform(typeText("1"), closeSoftKeyboard())
+        onView(withId(R.id.btn_compute)).perform(click())
 
-        onView(withId(R.id.text_result)).check(matches(isDisplayed()))
-        onView(withId(R.id.text_result)).check(matches(withText("1")))
+        onView(withId(R.id.tv_result)).check(matches(isDisplayed()))
+        onView(withId(R.id.tv_result)).check(matches(withText("1")))
     }
 }
