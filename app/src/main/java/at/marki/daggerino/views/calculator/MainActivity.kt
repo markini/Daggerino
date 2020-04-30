@@ -2,8 +2,8 @@ package at.marki.daggerino.views.calculator
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import at.marki.daggerino.app.R
-import at.marki.daggerino.app.databinding.ActivityMainBinding
+import at.marki.daggerino.R
+import at.marki.daggerino.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

@@ -63,6 +63,11 @@ dependencies {
 
     implementation(Libs.TIMBER)
 
+    api(Libs.DAGGER_ANDROID)
+    api(Libs.DAGGER_SUPPORT)
+    annotationProcessor(Libs.DAGGER_PROCESSOR)
+    annotationProcessor(Libs.DAGGER_COMPILER)
+
     testImplementation(TestingLib.JUNIT)
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)

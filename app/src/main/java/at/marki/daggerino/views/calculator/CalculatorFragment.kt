@@ -4,11 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
-import at.marki.daggerino.app.R
-import at.marki.daggerino.app.databinding.FragmentCalculatorBinding
-import at.marki.daggerino.views.BaseFragment
+import at.marki.daggerino.R
+import at.marki.daggerino.databinding.FragmentCalculatorBinding
 import at.marki.daggerino.library.FactorialCalculator
 import at.marki.daggerino.library.android.NotificationUtil
+import at.marki.daggerino.views.BaseFragment
 
 class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
 

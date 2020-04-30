@@ -6,7 +6,6 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import at.marki.daggerino.app.R
 import at.marki.daggerino.views.calculator.MainActivity
 import org.junit.Rule
 import org.junit.Test

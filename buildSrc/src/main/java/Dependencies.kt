@@ -14,6 +14,7 @@ object Versions {
     const val JUNIT = "4.13"
     const val KTLINT = "0.36.0"
     const val TIMBER = "4.7.1"
+    const val DAGGER = "2.27"
 }
 
 object BuildPluginsVersion {
@@ -31,7 +32,13 @@ object SupportLibs {
 }
 
 object Libs {
+
     const val TIMBER = "com.jakewharton.timber:timber:${Versions.TIMBER}"
+    const val DAGGER = "com.google.dagger:dagger:${Versions.DAGGER}"
+    const val DAGGER_ANDROID = "com.google.dagger:dagger-android:${Versions.DAGGER}"
+    const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Versions.DAGGER}"
+    const val DAGGER_SUPPORT = "com.google.dagger:dagger-android-support:${Versions.DAGGER}"
+    const val DAGGER_PROCESSOR = "com.google.dagger:dagger-android-processor:${Versions.DAGGER}"
 }
 
 object TestingLib {
