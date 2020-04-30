@@ -3,6 +3,7 @@ package at.marki.daggerino.views.calculator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import at.marki.daggerino.app.R
+import at.marki.daggerino.app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,9 +14,14 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.content,
-                    CalculatorFragment.newInstance(), "calculator")
+                .add(
+                    R.id.content,
+                    CalculatorFragment.newInstance(), "calculator"
+                )
                 .commit()
         }
+
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        // Just in case
     }
 }
