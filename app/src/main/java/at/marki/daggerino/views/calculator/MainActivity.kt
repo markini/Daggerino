@@ -3,6 +3,7 @@ package at.marki.daggerino.views.calculator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import at.marki.daggerino.R
+import at.marki.daggerino.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
                 .commit()
         }
 
-        // val binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
         // Just in case
     }
 }

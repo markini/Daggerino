@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
 import at.marki.daggerino.R
+import at.marki.daggerino.databinding.FragmentCalculatorBinding
 import at.marki.daggerino.library.FactorialCalculator
 import at.marki.daggerino.library.android.NotificationUtil
 import at.marki.daggerino.views.BaseFragment
-import kotlinx.android.synthetic.main.fragment_calculator.*
 
 class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
 
@@ -19,7 +19,7 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
     }
 
     // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
-    // private var binding: FragmentCalculatorBinding? = null
+    private var binding: FragmentCalculatorBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +27,15 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
 
     override fun onViewCreated(view: View, inState: Bundle?) {
         super.onViewCreated(view, inState)
-//        val fragmentCalculatorBinding = FragmentCalculatorBinding.bind(view)
-//        binding = fragmentCalculatorBinding
+        val fragmentCalculatorBinding = FragmentCalculatorBinding.bind(view)
+        binding = fragmentCalculatorBinding
 
-        btn_compute.setOnClickListener {
-            val input = et_factorial.text.toString().toInt()
+        binding?.btnCompute?.setOnClickListener {
+            val input = binding?.etFactorial?.text.toString().toInt()
             val result = FactorialCalculator.computeFactorial(input).toString()
 
-            tv_result.text = result
-            tv_result.visibility = VISIBLE
+            binding?.tvResult?.text = result
+            binding?.tvResult?.visibility = VISIBLE
 
             notificationUtil.showNotification(
                 context = context!!,
@@ -58,7 +58,7 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
     }
 
     override fun onDestroyView() {
-        // binding = null
+        binding = null
         super.onDestroyView()
     }
 
