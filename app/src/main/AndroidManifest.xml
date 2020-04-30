@@ -4,7 +4,7 @@
     package="at.marki.daggerino.app">
 
     <application
-        android:name="com.ncorti.kotlin.template.app.DaggerinoApplication"
+        android:name="at.marki.daggerino.DaggerinoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name="com.ncorti.kotlin.template.app.views.calculator.MainActivity">
+        <activity android:name="at.marki.daggerino.views.calculator.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
