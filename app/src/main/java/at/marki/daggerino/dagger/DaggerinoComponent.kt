@@ -7,9 +7,9 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [DaggerinoModule::class])
-interface DaggerinoComponent : AndroidInjector<DaggerinoApplication?> {
+interface DaggerinoComponent : AndroidInjector<DaggerinoApplication> {
     @Component.Factory
-    abstract class Builder : AndroidInjector.Factory<DaggerinoApplication?>
+    abstract class Builder : AndroidInjector.Factory<DaggerinoApplication>
 
 //    @Component.Factory
 //    interface Factory : AndroidInjector.Factory<DaggerinoApplication> {

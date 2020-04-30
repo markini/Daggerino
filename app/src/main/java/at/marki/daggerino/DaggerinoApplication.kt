@@ -1,6 +1,8 @@
 package at.marki.daggerino
 
 import at.marki.daggerino.BuildConfig.DEBUG
+import at.marki.daggerino.dagger.DaggerDaggerinoComponent
+import at.marki.daggerino.dagger.DaggerinoComponent
 import at.marki.daggerino.tools.CrashReportingTree
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication

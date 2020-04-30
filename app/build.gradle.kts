@@ -1,7 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("kotlin-android-extensions")
+    kotlin("android.extensions")
+    kotlin("kapt")
 }
 
 android {
@@ -63,14 +64,18 @@ dependencies {
 
     implementation(Libs.TIMBER)
 
-    api(Libs.DAGGER_ANDROID)
-    api(Libs.DAGGER_SUPPORT)
-    annotationProcessor(Libs.DAGGER_PROCESSOR)
-    annotationProcessor(Libs.DAGGER_COMPILER)
+    implementation(Libs.DAGGER_ANDROID)
+    implementation(Libs.DAGGER_SUPPORT)
+    kapt(Libs.DAGGER_PROCESSOR)
+    kapt(Libs.DAGGER_COMPILER)
 
     testImplementation(TestingLib.JUNIT)
 
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
     androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
     androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
+}
+
+kapt {
+    generateStubs = true
 }
