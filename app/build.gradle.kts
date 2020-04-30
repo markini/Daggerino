@@ -48,6 +48,7 @@ android {
         isWarningsAsErrors = true
         isAbortOnError = true
     }
+    viewBinding.isEnabled = true
 }
 
 dependencies {
@@ -59,6 +60,8 @@ dependencies {
     implementation(SupportLibs.ANDROIDX_APPCOMPAT)
     implementation(SupportLibs.ANDROIDX_CONSTRAINT_LAYOUT)
     implementation(SupportLibs.ANDROIDX_CORE_KTX)
+
+    implementation(Libs.TIMBER)
 
     testImplementation(TestingLib.JUNIT)
 
