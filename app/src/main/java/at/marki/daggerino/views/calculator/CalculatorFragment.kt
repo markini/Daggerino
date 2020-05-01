@@ -46,7 +46,6 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
         binding = fragmentCalculatorBinding
 
         binding?.btnCompute?.setOnClickListener {
-            snackCreator2.showMessageSnackbar(getView()!!, "AAAAHHHHHHH!!!")
             val input = binding?.etFactorial?.text.toString()
             val number = if (input.isBlank()) 0 else input.toInt()
             val result = FactorialCalculator.computeFactorial(number).toString()
@@ -60,6 +59,17 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
                 message = result
             )
         }
+
+        binding?.btnSnack1?.setOnClickListener { snack1Click() }
+        binding?.btnSnack2?.setOnClickListener { snack2Click() }
+    }
+
+    private fun snack1Click() {
+        snackCreator1.showMessageSnackbar(view!!, "Snack 1 Click")
+    }
+
+    private fun snack2Click() {
+        snackCreator2.showMessageSnackbar(view!!, "Snack 2 Click")
     }
 
     override fun onStart() {
