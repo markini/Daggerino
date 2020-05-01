@@ -16,6 +16,7 @@ object Versions {
     const val KTLINT = "0.36.0"
     const val TIMBER = "4.7.1"
     const val DAGGER = "2.27"
+    const val EVENT_BUS = "3.2.0"
 }
 
 object BuildPluginsVersion {
@@ -42,6 +43,7 @@ object Libs {
     const val DAGGER_COMPILER = "com.google.dagger:dagger-compiler:${Versions.DAGGER}"
     const val DAGGER_SUPPORT = "com.google.dagger:dagger-android-support:${Versions.DAGGER}"
     const val DAGGER_PROCESSOR = "com.google.dagger:dagger-android-processor:${Versions.DAGGER}"
+    const val EVENT_BUS = "org.greenrobot:eventbus:${Versions.EVENT_BUS}"
 }
 
 object TestingLib {

@@ -7,9 +7,11 @@ import android.view.View.VISIBLE
 import at.marki.daggerino.DaggerinoApplication
 import at.marki.daggerino.R
 import at.marki.daggerino.databinding.FragmentCalculatorBinding
+import at.marki.daggerino.events.CalculateEvent
 import at.marki.daggerino.tools.SnackCreator1
 import at.marki.daggerino.tools.SnackCreator2
 import at.marki.daggerino.views.BaseFragment
+import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
 
 class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), CalculatorView {
@@ -22,6 +24,8 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
     lateinit var application: DaggerinoApplication
     @Inject
     lateinit var calculatorPresenter: CalculatorPresenter
+    @Inject
+    lateinit var bus: EventBus
 
     // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
     private var binding: FragmentCalculatorBinding? = null
@@ -32,6 +36,8 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        // Is this a hack? Maybe. I rike iit!
+        presenter = calculatorPresenter
     }
 
     override fun onViewCreated(view: View, inState: Bundle?) {
@@ -44,6 +50,7 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
             val result = calculatorPresenter.computeFactorial(input)
             binding?.tvResult?.text = result
             binding?.tvResult?.visibility = VISIBLE
+            bus.post(CalculateEvent())
         }
 
         binding?.btnSnack1?.setOnClickListener { snack1Click() }
@@ -86,6 +93,6 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
     }
 
     override fun showMessage(message: String) {
-        snackCreator1.showMessageSnackbar(view!!, "Test Message")
+        snackCreator1.showMessageSnackbar(view!!, message)
     }
 }

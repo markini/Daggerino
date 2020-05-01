@@ -64,6 +64,7 @@ dependencies {
     implementation(SupportLibs.MATERIAL)
 
     implementation(Libs.TIMBER)
+    implementation(Libs.EVENT_BUS)
 
     implementation(Libs.DAGGER_ANDROID)
     implementation(Libs.DAGGER_SUPPORT)
