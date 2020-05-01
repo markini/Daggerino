@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,77 +7,81 @@
     android:padding="@dimen/doub_grid_size">
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:maxLines="1"
         android:text="@string/title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        app:layout_constraintBottom_toTopOf="@id/tv_description"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/base_grid_size"
-        android:text="@string/description"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@id/et_factorial"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/et_factorial"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:layout_below="@id/title"
         android:hint="@string/factorial_hint"
         android:importantForAutofill="no"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_description"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:inputType="number" />
 
-    <TextView
-        android:id="@+id/tv_result"
-        style="@style/TextAppearance.AppCompat.Display1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_result"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/doub_grid_size"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_factorial"
-        tools:text="42"
-        tools:visibility="visible" />
+        android:layout_below="@id/et_factorial"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:paddingEnd="20dp"
+            android:text="@string/result"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:maxLines="2"
+            tools:text="42" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_compute"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/doub_grid_size"
-        android:text="@string/compute"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_result" />
+        android:layout_below="@id/ll_result"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="@string/compute" />
 
     <Button
         android:id="@+id/btn_snack1"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/doub_grid_size"
-        android:text="@string/snack1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_compute" />
+        android:layout_below="@id/btn_compute"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="30dp"
+        android:text="@string/snack1" />
 
     <Button
         android:id="@+id/btn_snack2"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/doub_grid_size"
-        android:text="@string/snack2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_snack1" />
+        android:layout_below="@id/btn_compute"
+        android:layout_toStartOf="@id/btn_snack1"
+        android:text="@string/snack2" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

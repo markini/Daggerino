@@ -7,14 +7,12 @@ import android.view.View.VISIBLE
 import at.marki.daggerino.DaggerinoApplication
 import at.marki.daggerino.R
 import at.marki.daggerino.databinding.FragmentCalculatorBinding
-import at.marki.daggerino.library.FactorialCalculator
-import at.marki.daggerino.library.android.NotificationUtil
 import at.marki.daggerino.tools.SnackCreator1
 import at.marki.daggerino.tools.SnackCreator2
 import at.marki.daggerino.views.BaseFragment
 import javax.inject.Inject
 
-class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
+class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), CalculatorView {
 
     @Inject
     lateinit var snackCreator1: SnackCreator1
@@ -22,12 +20,8 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
     lateinit var snackCreator2: SnackCreator2
     @Inject
     lateinit var application: DaggerinoApplication
-
-    private val notificationUtil: NotificationUtil by lazy {
-        NotificationUtil(
-            context!!
-        )
-    }
+    @Inject
+    lateinit var calculatorPresenter: CalculatorPresenter
 
     // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
     private var binding: FragmentCalculatorBinding? = null
@@ -47,17 +41,9 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
 
         binding?.btnCompute?.setOnClickListener {
             val input = binding?.etFactorial?.text.toString()
-            val number = if (input.isBlank()) 0 else input.toInt()
-            val result = FactorialCalculator.computeFactorial(number).toString()
-
+            val result = calculatorPresenter.computeFactorial(input)
             binding?.tvResult?.text = result
             binding?.tvResult?.visibility = VISIBLE
-
-            notificationUtil.showNotification(
-                context = context!!,
-                title = getString(R.string.notification_title),
-                message = result
-            )
         }
 
         binding?.btnSnack1?.setOnClickListener { snack1Click() }
@@ -97,5 +83,9 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
         fun newInstance(): CalculatorFragment {
             return CalculatorFragment()
         }
+    }
+
+    override fun showMessage(message: String) {
+        snackCreator1.showMessageSnackbar(view!!, "Test Message")
     }
 }

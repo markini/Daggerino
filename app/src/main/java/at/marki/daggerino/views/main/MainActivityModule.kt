@@ -12,5 +12,5 @@ abstract class MainActivityModule {
 //    abstract fun bindMainActivityView(mainActivity: MainActivity?): MainActivityView?
 
     @ContributesAndroidInjector(modules = [CalculatorFragmentModule::class])
-    abstract fun calculatorFragmentInjector(): CalculatorFragment?
+    abstract fun calculatorFragmentInjector(): CalculatorFragment
 }
