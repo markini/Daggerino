@@ -4,11 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
+import at.marki.daggerino.DaggerinoApplication
 import at.marki.daggerino.R
 import at.marki.daggerino.databinding.FragmentCalculatorBinding
 import at.marki.daggerino.library.FactorialCalculator
 import at.marki.daggerino.library.android.NotificationUtil
 import at.marki.daggerino.tools.SnackCreator1
+import at.marki.daggerino.tools.SnackCreator2
 import at.marki.daggerino.views.BaseFragment
 import javax.inject.Inject
 
@@ -16,6 +18,10 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
 
     @Inject
     lateinit var snackCreator1: SnackCreator1
+    @Inject
+    lateinit var snackCreator2: SnackCreator2
+    @Inject
+    lateinit var application: DaggerinoApplication
 
     private val notificationUtil: NotificationUtil by lazy {
         NotificationUtil(
@@ -40,7 +46,7 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
         binding = fragmentCalculatorBinding
 
         binding?.btnCompute?.setOnClickListener {
-            snackCreator1.showMessageSnackbar(getView()!!, "AAAAHHHHHHH!!!")
+            snackCreator2.showMessageSnackbar(getView()!!, "AAAAHHHHHHH!!!")
             val input = binding?.etFactorial?.text.toString()
             val number = if (input.isBlank()) 0 else input.toInt()
             val result = FactorialCalculator.computeFactorial(number).toString()
