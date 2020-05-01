@@ -1,11 +1,12 @@
-package at.marki.daggerino.views.calculator
+package at.marki.daggerino.views.main
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import at.marki.daggerino.R
 import at.marki.daggerino.databinding.ActivityMainBinding
+import at.marki.daggerino.views.BaseActivity
+import at.marki.daggerino.views.calculator.CalculatorFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

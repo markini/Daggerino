@@ -8,9 +8,14 @@ import at.marki.daggerino.R
 import at.marki.daggerino.databinding.FragmentCalculatorBinding
 import at.marki.daggerino.library.FactorialCalculator
 import at.marki.daggerino.library.android.NotificationUtil
+import at.marki.daggerino.tools.SnackCreator1
 import at.marki.daggerino.views.BaseFragment
+import javax.inject.Inject
 
 class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
+
+    @Inject
+    lateinit var snackCreator1: SnackCreator1
 
     private val notificationUtil: NotificationUtil by lazy {
         NotificationUtil(
@@ -25,14 +30,20 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
         super.onCreate(savedInstanceState)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
+
     override fun onViewCreated(view: View, inState: Bundle?) {
         super.onViewCreated(view, inState)
         val fragmentCalculatorBinding = FragmentCalculatorBinding.bind(view)
         binding = fragmentCalculatorBinding
 
         binding?.btnCompute?.setOnClickListener {
-            val input = binding?.etFactorial?.text.toString().toInt()
-            val result = FactorialCalculator.computeFactorial(input).toString()
+            snackCreator1.showMessageSnackbar(getView()!!, "AAAAHHHHHHH!!!")
+            val input = binding?.etFactorial?.text.toString()
+            val number = if (input.isBlank()) 0 else input.toInt()
+            val result = FactorialCalculator.computeFactorial(number).toString()
 
             binding?.tvResult?.text = result
             binding?.tvResult?.visibility = VISIBLE
@@ -43,10 +54,6 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator) {
                 message = result
             )
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
     }
 
     override fun onStart() {
