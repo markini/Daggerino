@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.VISIBLE
 import at.marki.daggerino.DaggerinoApplication
 import at.marki.daggerino.R
+import at.marki.daggerino.Worker1
 import at.marki.daggerino.databinding.FragmentCalculatorBinding
 import at.marki.daggerino.events.CalculateEvent
 import at.marki.daggerino.tools.SnackCreator1
@@ -59,6 +60,7 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
 
     private fun snack1Click() {
         snackCreator1.showMessageSnackbar(view!!, "Snack 1 Click")
+        Worker1.startWorker(context)
     }
 
     private fun snack2Click() {

@@ -5,6 +5,10 @@ plugins {
     kotlin("kapt")
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
 android {
     compileSdkVersion(Sdk.COMPILE_SDK_VERSION)
 
@@ -50,6 +54,11 @@ android {
         isAbortOnError = true
     }
     viewBinding.isEnabled = true
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -65,6 +74,7 @@ dependencies {
 
     implementation(Libs.TIMBER)
     implementation(Libs.EVENT_BUS)
+    implementation(Libs.WORK_MANAGER)
 
     implementation(Libs.DAGGER_ANDROID)
     implementation(Libs.DAGGER_SUPPORT)

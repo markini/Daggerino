@@ -17,6 +17,7 @@ object Versions {
     const val TIMBER = "4.7.1"
     const val DAGGER = "2.27"
     const val EVENT_BUS = "3.2.0"
+    const val WORK_MANAGER = "2.3.4"
 }
 
 object BuildPluginsVersion {
@@ -44,6 +45,7 @@ object Libs {
     const val DAGGER_SUPPORT = "com.google.dagger:dagger-android-support:${Versions.DAGGER}"
     const val DAGGER_PROCESSOR = "com.google.dagger:dagger-android-processor:${Versions.DAGGER}"
     const val EVENT_BUS = "org.greenrobot:eventbus:${Versions.EVENT_BUS}"
+    const val WORK_MANAGER = "androidx.work:work-runtime-ktx:${Versions.WORK_MANAGER}"
 }
 
 object TestingLib {
