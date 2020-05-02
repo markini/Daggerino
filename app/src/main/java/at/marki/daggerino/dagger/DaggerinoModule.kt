@@ -11,7 +11,6 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 
-// TODO add workermodule
 @Module(includes = [AndroidSupportInjectionModule::class, ActivityModule::class, DataModule::class, AndroidWorkerInjectionModule::class])
 abstract class DaggerinoModule {
     @Binds

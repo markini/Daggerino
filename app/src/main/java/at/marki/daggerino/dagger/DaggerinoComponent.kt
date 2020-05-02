@@ -10,9 +10,4 @@ import javax.inject.Singleton
 interface DaggerinoComponent : AndroidInjector<DaggerinoApplication> {
     @Component.Factory
     abstract class Builder : AndroidInjector.Factory<DaggerinoApplication>
-
-//    @Component.Factory
-//    interface Factory : AndroidInjector.Factory<DaggerinoApplication> {
-//        override fun create(@BindsInstance instance: DaggerinoApplication): DaggerinoComponent
-//    }
 }
