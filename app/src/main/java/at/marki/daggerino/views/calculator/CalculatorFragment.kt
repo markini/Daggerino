@@ -6,12 +6,13 @@ import android.view.View
 import android.view.View.VISIBLE
 import at.marki.daggerino.DaggerinoApplication
 import at.marki.daggerino.R
-import at.marki.daggerino.Worker1
+import at.marki.daggerino.worker.Worker1
 import at.marki.daggerino.databinding.FragmentCalculatorBinding
 import at.marki.daggerino.events.CalculateEvent
 import at.marki.daggerino.tools.SnackCreator1
 import at.marki.daggerino.tools.SnackCreator2
 import at.marki.daggerino.views.BaseFragment
+import at.marki.daggerino.worker.Worker2
 import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
 
@@ -65,6 +66,7 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
 
     private fun snack2Click() {
         snackCreator2.showMessageSnackbar(view!!, "Snack 2 Click")
+        Worker2.startWorker(context)
     }
 
     override fun onStart() {

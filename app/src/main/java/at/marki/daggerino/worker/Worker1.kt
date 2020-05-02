@@ -1,4 +1,4 @@
-package at.marki.daggerino
+package at.marki.daggerino.worker
 
 import android.content.Context
 import androidx.work.OneTimeWorkRequestBuilder
@@ -7,6 +7,7 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import at.marki.daggerino.tools.TimeLogger
 import dagger.android.HasAndroidInjector
+import timber.log.Timber
 import javax.inject.Inject
 
 class Worker1(appContext: Context, workerParams: WorkerParameters) :
@@ -21,6 +22,7 @@ class Worker1(appContext: Context, workerParams: WorkerParameters) :
     lateinit var timeLogger: TimeLogger
 
     override fun doWork(): Result {
+        Timber.e("Worker 1 Running")
         timeLogger.logCurrentTime()
         return Result.success()
     }
