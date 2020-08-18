@@ -6,12 +6,13 @@ import android.view.View
 import android.view.View.VISIBLE
 import at.marki.daggerino.DaggerinoApplication
 import at.marki.daggerino.R
-import at.marki.daggerino.worker.Worker1
 import at.marki.daggerino.databinding.FragmentCalculatorBinding
 import at.marki.daggerino.events.CalculateEvent
+import at.marki.daggerino.tools.CalculatorTool
 import at.marki.daggerino.tools.SnackCreator1
 import at.marki.daggerino.tools.SnackCreator2
 import at.marki.daggerino.views.BaseFragment
+import at.marki.daggerino.worker.Worker1
 import at.marki.daggerino.worker.Worker2
 import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
@@ -20,14 +21,20 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
 
     @Inject
     lateinit var snackCreator1: SnackCreator1
+
     @Inject
     lateinit var snackCreator2: SnackCreator2
+
     @Inject
     lateinit var application: DaggerinoApplication
+
     @Inject
     lateinit var calculatorPresenter: CalculatorPresenter
+
     @Inject
     lateinit var bus: EventBus
+
+    var calculatorTool: CalculatorTool? = null
 
     // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
     private var binding: FragmentCalculatorBinding? = null
@@ -40,6 +47,9 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
         super.onAttach(context)
         // Is this a hack? Maybe. I rike iit!
         presenter = calculatorPresenter
+
+        // Init calculatorTool
+        calculatorTool = CalculatorTool(context)
     }
 
     override fun onViewCreated(view: View, inState: Bundle?) {
@@ -60,7 +70,8 @@ class CalculatorFragment : BaseFragment(R.layout.fragment_calculator), Calculato
     }
 
     private fun snack1Click() {
-        snackCreator1.showMessageSnackbar(view!!, "Snack 1 Click")
+        // snackCreator1.showMessageSnackbar(view!!, "Snack 1 Click")
+        calculatorTool?.createSnackText(view!!, "Snack 1 Click and $application")
         Worker1.startWorker(context)
     }
 
